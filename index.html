@@ -96,9 +96,10 @@
       background: #fff;
       padding: 15px;
       border-radius: 10px;
-      max-width: 90%;
+      max-width: 95%;
       width: 560px;
       box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      position: relative;
     }
     .close-btn {
       position: absolute;
@@ -108,18 +109,26 @@
       color: #333;
       cursor: pointer;
     }
+
+    iframe {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      aspect-ratio: 16/9;
+    }
   </style>
 </head>
 <body>
   <header>Cartas para Jennifer Nicolle 💌</header>
 
   <div class="grid">
-    <!-- Ejemplo de botón para abrir video -->
-    <button onclick="openVideo('s5ummiduOwY')" style="padding:10px 20px; margin-bottom:20px;">🎬 Ver video especial</button>
+    <!-- Botón para abrir playlist -->
+    <button onclick="openVideo()" style="padding:10px 20px; margin-bottom:20px; border-radius: 10px;">
+      🎬 Ver video especial
+    </button>
 
-    <!-- Tus cartas aquí -->
+    <!-- Ejemplo de carta -->
     <div class="card-button" onclick="abrir('extrañar')">Ábrela cuando me extrañes</div>
-    <!-- … demás botones … -->
   </div>
 
   <!-- Modal para cartas -->
@@ -127,16 +136,22 @@
 
   <!-- Modal para video -->
   <div id="videoModal" class="video-modal" onclick="closeVideo()">
-    <div class="video-content">
+    <div class="video-content" onclick="event.stopPropagation()">
       <span class="close-btn" onclick="closeVideo()">&times;</span>
-      <iframe id="videoFrame" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+      <!-- TRUE embed for playlist (works in GitHub Pages) -->
+      <iframe 
+        id="videoFrame"
+        src=""
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 
   <script>
     const cartas = {
       extrañar: "Jennifer Nicolle, si estás leyendo esto es porque hoy me extrañas un poquito… y quiero que sientas mi abrazo aunque estemos lejos.",
-      // ... (añade todas tus cartas aquí) ...
     };
 
     function abrir(tipo) {
@@ -151,24 +166,29 @@
 
     function cerrar(e) {
       const modal = document.getElementById('modal');
-      if (!e || e.target === modal) {
-        modal.style.display = 'none';
-      }
+      if (!e || e.target === modal) modal.style.display = 'none';
     }
 
-    function openVideo(videoId) {
+    function openVideo() {
       const modalV = document.getElementById('videoModal');
       const frame = document.getElementById('videoFrame');
-      frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0`;
+
+      /* Playlist embed oficial */
+      frame.src =
+        "https://www.youtube.com/embed/videoseries?list=PLLifpi7DjuKQzug-B4ru23a-nUglr4Aib";
+
       modalV.style.display = 'flex';
     }
 
     function closeVideo() {
       const modalV = document.getElementById('videoModal');
       const frame = document.getElementById('videoFrame');
-      frame.src = '';
+
+      frame.src = ""; // Detiene el video
       modalV.style.display = 'none';
     }
   </script>
 </body>
 </html>
+
+

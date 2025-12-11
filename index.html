@@ -97,9 +97,8 @@
       cursor: pointer;
     }
 
-
     /* COLORES DE CARTAS */
-    .extrañar { background: #ffe6e6; }
+    .extranar { background: #ffe6e6; }
     .triste { background: #c6d8f5; }
     .duda { background: #f8e8b0; }
     .maldia { background: #f7d4c8; }
@@ -111,7 +110,6 @@
     .bonita { background: #faf3c6; }
     .ansiedad { background: #d7e9ff; }
     .suenos { background: #f9d1ff; }
-
 
     /* CORAZONES CAYENDO */
     .corazones {
@@ -146,6 +144,11 @@
 
   <!-- CORAZONES -->
   <div class="corazones" id="corazones"></div>
+
+  <!-- REPRODUCTOR OCULTO YOUTUBE -->
+  <iframe id="ytplayer" width="0" height="0" frameborder="0"
+    src="https://www.youtube.com/embed/s5ummiduOwY?autoplay=1&mute=1&loop=1&playlist=s5ummiduOwY,jNBaF1wYMyQ">
+  </iframe>
 
   <!-- GRID DE BOTONES -->
   <div class="grid">
@@ -182,7 +185,6 @@ const cartas = {
   ansiedad: "Respira mi amor. Inhala profundo… exhala lento. Aquí estoy contigo, siempre, recuerda que todo es mental y tu decides como funcionar tu mente🥰",
   suenos: "Cierra los ojos mi amor y encuéntrame ahí contigo. Prometo que un día esos sueños serán nuestra realidad, TE AMO."
 };
-
 
 /* ABRIR CARTA */
 function abrir(tipo) {

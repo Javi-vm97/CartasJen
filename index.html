@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cartas para El Amor De Mi Vida Jenn 💌</title>
-
+  <title>Cartas para Jennifer Nicolle 💌</title>
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -13,7 +12,6 @@
       padding: 0;
       overflow-x: hidden;
     }
-
     header {
       text-align: center;
       padding: 40px 20px;
@@ -21,20 +19,13 @@
       color: #4a2c2a;
       font-size: 2rem;
       font-weight: bold;
-      position: relative;
-      z-index: 10;
     }
-
-    /* GRID DE BOTONES */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       padding: 20px;
-      position: relative;
-      z-index: 10;
     }
-
     .card-button {
       background: white;
       padding: 20px;
@@ -42,50 +33,41 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       cursor: pointer;
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.4s ease;
+      transition: transform 0.3s;
       font-size: 1.1rem;
-      position: relative;
-      z-index: 10;
     }
-
-    /* EFECTO DE BRILLO */
     .card-button:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 100, 150, 0.8);
     }
 
-    /* MODAL */
     .modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0,0,0,0.5);
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 20;
+      z-index: 1000;
     }
-
     .carta {
       width: 90%;
       max-width: 500px;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      font-size: 1.1rem;
       background: white;
+      font-size: 1.1rem;
       transform-style: preserve-3d;
       transform: rotateY(90deg);
       animation: flipCarta 0.6s forwards;
     }
-
     @keyframes flipCarta {
       from { transform: rotateY(90deg); opacity: 0; }
       to { transform: rotateY(0deg); opacity: 1; }
     }
-
     .close {
       margin-top: 20px;
       display: block;
@@ -97,135 +79,96 @@
       cursor: pointer;
     }
 
-    /* COLORES DE CARTAS */
-    .extranar { background: #ffe6e6; }
-    .triste { background: #c6d8f5; }
-    .duda { background: #f8e8b0; }
-    .maldia { background: #f7d4c8; }
-    .enojo { background: #ffb3b3; }
-    .insegura { background: #e0bbf7; }
-    .amada { background: #ffd6f2; }
-    .sola { background: #cce7e8; }
-    .orgullo { background: #d9f5d3; }
-    .bonita { background: #faf3c6; }
-    .ansiedad { background: #d7e9ff; }
-    .suenos { background: #f9d1ff; }
-
-    /* CORAZONES CAYENDO */
-    .corazones {
+    /* Modal de video */
+    .video-modal {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 1;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
     }
-
-    .corazon {
+    .video-content {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 560px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+    .close-btn {
       position: absolute;
-      top: -10%;
-      font-size: 20px;
-      animation: caer 6s linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes caer {
-      0% { transform: translateY(-10vh) rotate(0deg); }
-      100% { transform: translateY(110vh) rotate(360deg); }
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: #333;
+      cursor: pointer;
     }
   </style>
 </head>
-
 <body>
+  <header>Cartas para Jennifer Nicolle 💌</header>
 
-  <header>Cartas para mi Jen 💌</header>
-
-  <!-- CORAZONES -->
-  <div class="corazones" id="corazones"></div>
-
-  <!-- REPRODUCTOR OCULTO YOUTUBE -->
-  <iframe id="ytplayer" width="0" height="0" frameborder="0"
-    src="https://www.youtube.com/embed/s5ummiduOwY?autoplay=1&mute=1&loop=1&playlist=s5ummiduOwY,jNBaF1wYMyQ">
-  </iframe>
-
-  <!-- GRID DE BOTONES -->
   <div class="grid">
-    <div class="card-button" onclick="abrir('extranar')">Ábrela cuando me extrañes</div>
-    <div class="card-button" onclick="abrir('triste')">Ábrela cuando estés triste</div>
-    <div class="card-button" onclick="abrir('duda')">Ábrela cuando dudes de mi amor</div>
-    <div class="card-button" onclick="abrir('maldia')">Ábrela cuando tengas un mal día</div>
-    <div class="card-button" onclick="abrir('enojo')">Ábrela cuando estés enojada conmigo</div>
-    <div class="card-button" onclick="abrir('insegura')">Ábrela cuando te sientas insegura</div>
-    <div class="card-button" onclick="abrir('amada')">Ábrela cuando quieras sentirte amada</div>
-    <div class="card-button" onclick="abrir('sola')">Ábrela cuando te sientas sola</div>
-    <div class="card-button" onclick="abrir('orgullo')">Ábrela cuando estés orgullosa de ti</div>
-    <div class="card-button" onclick="abrir('bonita')">Ábrela cuando quieras leer algo bonito</div>
-    <div class="card-button" onclick="abrir('ansiedad')">Ábrela cuando tengas ansiedad</div>
-    <div class="card-button" onclick="abrir('suenos')">Ábrela cuando quieras soñar conmigo</div>
+    <!-- Ejemplo de botón para abrir video -->
+    <button onclick="openVideo('s5ummiduOwY')" style="padding:10px 20px; margin-bottom:20px;">🎬 Ver video especial</button>
+
+    <!-- Tus cartas aquí -->
+    <div class="card-button" onclick="abrir('extrañar')">Ábrela cuando me extrañes</div>
+    <!-- … demás botones … -->
   </div>
 
-  <!-- MODAL -->
+  <!-- Modal para cartas -->
   <div id="modal" class="modal" onclick="cerrar(event)"></div>
 
-<script>
-
-const cartas = {
-  extranar: "Mi REYNA, si estás leyendo esto quiero que sepas que todo el tiempo pienso en ti… te extraño todos los dias :c, pronto nos veremos❤️.",
-  triste: "Mi amor🥺, hoy tu corazóncito debe estar pesadito. Quisiera estar ahí para cargarlo contigo. No estás sola mi reyna, todo pasará🤗.",
-  duda: "Preciosa, se que algunas veces dudas de mi amor, tenlo claro: tú eres la única a la que elijo todos los días y con quien me quiero casar🥰.",
-  maldia: "Hoy tal vez nada salió bien, pero aún así sigues siendo mi orgullo, estoy muy orgulloso de ti. Mañana será mejor, te lo prometo, despues de la tormenta siempre viene la calma🥰.",
-  enojo: "Mi niña, si estás enojada, lo siento, tal vez es por mi, pero no tienes que afrontarlo sola. Nunca quiero lastimarte. Aquí estoy cuando quieras hablar🥺.",
-  insegura: "Eres suficiente mi amor🥺. Más que suficiente. No sabes lo inteligente y maravillosa que eres y el potencial que tienes, no te rindas😇.",
-  amada: "Déjame recordarte esto: te amo con todo mi amor, con intención y con ganas de un futuro juntos🥰.",
-  sola: "Nunca estás sola. Mi amor está contigo aunque mis manos no puedan tocarte por ahora, se que pronto todo mejorará y ya no estaremos solos 🥰.",
-  orgullo: "¡MI AMOOORRRR! Estoy orgulloso de ti, mi vida, mi reyna mi cuchurrumina, mi universo, eres increible, todo tiene su recompensa🥳.",
-  bonita: "Te amo, sin dudas, todos los dias veo tus fotos y no sabes lo mucho que me encantas🤤.",
-  ansiedad: "Respira mi amor. Inhala profundo… exhala lento. Aquí estoy contigo, siempre, recuerda que todo es mental y tu decides como funcionar tu mente🥰",
-  suenos: "Cierra los ojos mi amor y encuéntrame ahí contigo. Prometo que un día esos sueños serán nuestra realidad, TE AMO."
-};
-
-/* ABRIR CARTA */
-function abrir(tipo) {
-  const modal = document.getElementById('modal');
-  modal.style.display = 'flex';
-  modal.innerHTML = `
-    <div class='carta ${tipo}'>
-      ${cartas[tipo]}
-      <div class='close' onclick='cerrar()'>Cerrar</div>
+  <!-- Modal para video -->
+  <div id="videoModal" class="video-modal" onclick="closeVideo()">
+    <div class="video-content">
+      <span class="close-btn" onclick="closeVideo()">&times;</span>
+      <iframe id="videoFrame" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-  `;
-}
+  </div>
 
-/* CERRAR MODAL */
-function cerrar(e) {
-  const modal = document.getElementById('modal');
-  if (!e || e.target === modal) {
-    modal.style.display = 'none';
-  }
-}
+  <script>
+    const cartas = {
+      extrañar: "Jennifer Nicolle, si estás leyendo esto es porque hoy me extrañas un poquito… y quiero que sientas mi abrazo aunque estemos lejos.",
+      // ... (añade todas tus cartas aquí) ...
+    };
 
-/* CORAZONES CAYENDO */
-function generarCorazones() {
-  const cont = document.getElementById("corazones");
+    function abrir(tipo) {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'flex';
+      modal.innerHTML = `
+        <div class='carta'>
+          ${cartas[tipo]}
+          <div class='close' onclick='cerrar()'>Cerrar</div>
+        </div>`;
+    }
 
-  setInterval(() => {
-    const corazon = document.createElement("div");
-    corazon.classList.add("corazon");
-    corazon.innerHTML = "❤️";
+    function cerrar(e) {
+      const modal = document.getElementById('modal');
+      if (!e || e.target === modal) {
+        modal.style.display = 'none';
+      }
+    }
 
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.animationDuration = 4 + Math.random() * 4 + "s";
+    function openVideo(videoId) {
+      const modalV = document.getElementById('videoModal');
+      const frame = document.getElementById('videoFrame');
+      frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0`;
+      modalV.style.display = 'flex';
+    }
 
-    cont.appendChild(corazon);
-
-    setTimeout(() => corazon.remove(), 8000);
-  }, 500);
-}
-
-generarCorazones();
-</script>
-
+    function closeVideo() {
+      const modalV = document.getElementById('videoModal');
+      const frame = document.getElementById('videoFrame');
+      frame.src = '';
+      modalV.style.display = 'none';
+    }
+  </script>
 </body>
 </html>

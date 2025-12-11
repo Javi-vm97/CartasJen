@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cartas para Jennifer Nicolle 💌</title>
+
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -79,79 +80,59 @@
       cursor: pointer;
     }
 
-    /* Modal de video */
-    .video-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .video-content {
-      background: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      max-width: 95%;
-      width: 560px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 2rem;
-      color: #333;
-      cursor: pointer;
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-      border-radius: 10px;
-      aspect-ratio: 16/9;
-    }
   </style>
 </head>
+
 <body>
+
   <header>Cartas para Jennifer Nicolle 💌</header>
 
   <div class="grid">
-    <!-- Botón para abrir playlist -->
-    <button onclick="openVideo()" style="padding:10px 20px; margin-bottom:20px; border-radius: 10px;">
-      🎬 Ver video especial
-    </button>
 
-    <!-- Ejemplo de carta -->
     <div class="card-button" onclick="abrir('extrañar')">Ábrela cuando me extrañes</div>
+    <div class="card-button" onclick="abrir('triste')">Ábrela cuando estés triste</div>
+    <div class="card-button" onclick="abrir('duda')">Ábrela cuando dudes de mi amor</div>
+    <div class="card-button" onclick="abrir('maldia')">Ábrela cuando tengas un mal día</div>
+    <div class="card-button" onclick="abrir('enojo')">Ábrela cuando estés enojada conmigo</div>
+    <div class="card-button" onclick="abrir('insegura')">Ábrela cuando te sientas insegura</div>
+    <div class="card-button" onclick="abrir('amada')">Ábrela cuando quieras sentirte amada</div>
+    <div class="card-button" onclick="abrir('sola')">Ábrela cuando te sientas sola</div>
+    <div class="card-button" onclick="abrir('orgullo')">Ábrela cuando estés orgullosa de ti</div>
+    <div class="card-button" onclick="abrir('bonito')">Ábrela cuando quieras leer algo bonito</div>
+    <div class="card-button" onclick="abrir('ansiedad')">Ábrela cuando tengas ansiedad</div>
+    <div class="card-button" onclick="abrir('suenos')">Ábrela cuando quieras soñar conmigo</div>
+
   </div>
 
-  <!-- Modal para cartas -->
+  <!-- MODAL DE CARTAS -->
   <div id="modal" class="modal" onclick="cerrar(event)"></div>
 
-  <!-- Modal para video -->
-  <div id="videoModal" class="video-modal" onclick="closeVideo()">
-    <div class="video-content" onclick="event.stopPropagation()">
-      <span class="close-btn" onclick="closeVideo()">&times;</span>
-
-      <!-- TRUE embed for playlist (works in GitHub Pages) -->
-      <iframe 
-        id="videoFrame"
-        src=""
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
+  <!-- VIDEO DE YOUTUBE DEBAJO -->
+  <div style="width: 100%; display: flex; justify-content: center; margin-top: 40px; margin-bottom: 40px;">
+    <iframe 
+      width="90%" 
+      height="315" 
+      style="max-width: 600px; border-radius: 15px; border: none;" 
+      src="https://www.youtube.com/embed/videoseries?list=PLLifpi7DjuKQzug-B4ru23a-nUglr4Aib"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
   </div>
 
   <script>
     const cartas = {
       extrañar: "Jennifer Nicolle, si estás leyendo esto es porque hoy me extrañas un poquito… y quiero que sientas mi abrazo aunque estemos lejos.",
+      triste: "Mi amor, hoy tu corazón está pesado. Quisiera estar ahí para cargarlo contigo. No estás sola.",
+      duda: "Jennifer, si dudas de mi amor, léelo claro: tú eres la única a la que elijo todos los días.",
+      maldia: "Hoy nada salió bien, pero aún así sigues siendo mi orgullo. Mañana será más suave, te lo prometo.",
+      enojo: "Mi niña, si estás enojada, lo siento. Nunca quiero lastimarte. Aquí estoy cuando quieras hablar.",
+      insegura: "Eres suficiente. Más que suficiente. Eres mi elección y mi paz.",
+      amada: "Déjame recordarte esto: te amo con calma, con intención y con ganas de futuro.",
+      sola: "Nunca estás sola, Jennifer. Mi amor está contigo aunque mis manos no puedan tocarte ahora.",
+      orgullo: "¡Lograste algo hermoso! Estoy orgulloso de ti, mi amor, como no tienes idea.",
+      bonito: "Eres mi pensamiento favorito del día. Te amo, así de simple.",
+      ansiedad: "Respira conmigo, amor. Inhala profundo… exhala lento. Aquí estoy contigo, siempre.",
+      suenos: "Cierra los ojos y encuéntrame ahí contigo. Prometo que un día esos sueños serán nuestra realidad."
     };
 
     function abrir(tipo) {
@@ -166,29 +147,14 @@
 
     function cerrar(e) {
       const modal = document.getElementById('modal');
-      if (!e || e.target === modal) modal.style.display = 'none';
-    }
-
-    function openVideo() {
-      const modalV = document.getElementById('videoModal');
-      const frame = document.getElementById('videoFrame');
-
-      /* Playlist embed oficial */
-      frame.src =
-        "https://www.youtube.com/embed/videoseries?list=PLLifpi7DjuKQzug-B4ru23a-nUglr4Aib";
-
-      modalV.style.display = 'flex';
-    }
-
-    function closeVideo() {
-      const modalV = document.getElementById('videoModal');
-      const frame = document.getElementById('videoFrame');
-
-      frame.src = ""; // Detiene el video
-      modalV.style.display = 'none';
+      if (!e || e.target === modal) {
+        modal.style.display = 'none';
+      }
     }
   </script>
+
 </body>
 </html>
+
 
 
